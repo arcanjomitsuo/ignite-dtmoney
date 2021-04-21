@@ -1,5 +1,5 @@
-import { darken } from "polished";
-import styled from "styled-components";
+import { darken } from 'polished';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   h2 {
@@ -29,7 +29,7 @@ export const Container = styled.div`
     }
   }
 
-  button[type="submit"] {
+  button[type='submit'] {
     width: 100%;
     padding: 0 1.5rem;
     height: 4rem;
@@ -69,7 +69,7 @@ export const TransactionTypeContainer = styled.div`
     transition: borser-color 0.2s;
 
     &:hover {
-      border-color: ${darken(0.1, "#d7d7d7")};
+      border-color: ${darken(0.1, '#d7d7d7')};
     }
   }
 
