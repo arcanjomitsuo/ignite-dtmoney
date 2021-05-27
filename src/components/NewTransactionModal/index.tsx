@@ -1,56 +1,65 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { Container, TransactionTypeContainer } from './styles';
+import { Container, RadioBox, TransactionTypeContainer } from './styles';
 import CloseImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
 
 interface NewTransactionModalProps {
-  isOpen: boolean;
-  onRequestClose: () => void;
+	isOpen: boolean;
+	onRequestClose: () => void;
 }
 
 export function NewTransactionModal({
-  isOpen,
-  onRequestClose,
+	isOpen,
+	onRequestClose,
 }: NewTransactionModalProps) {
-  const [type, setType] = useState('deposit');
-  return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      overlayClassName='react-modal-overlay'
-      className='react-modal-content'
-    >
-      <button
-        type='button'
-        onClick={onRequestClose}
-        className='react-modal-close'
-      >
-        <img src={CloseImg} alt='Fechar' />
-      </button>
+	const [type, setType] = useState('deposit');
 
-      <Container>
-        <h2>Cadastar transação</h2>
+	return (
+		<Modal
+			isOpen={isOpen}
+			onRequestClose={onRequestClose}
+			overlayClassName='react-modal-overlay'
+			className='react-modal-content'
+		>
+			<button
+				type='button'
+				onClick={onRequestClose}
+				className='react-modal-close'
+			>
+				<img src={CloseImg} alt='Fechar' />
+			</button>
 
-        <input type='text' placeholder='Título'></input>
-        <input type='number' placeholder='Valor'></input>
+			<Container>
+				<h2>Cadastar transação</h2>
 
-        <TransactionTypeContainer>
-          <button type='button' onClick={() => setType('deposit')}>
-            <img src={incomeImg} alt='Entrada' />
-            <span>Entrada</span>
-          </button>
+				<input type='text' placeholder='Título'></input>
+				<input type='number' placeholder='Valor'></input>
 
-          <button type='button' onClick={() => setType('wirhdraw')}>
-            <img src={outcomeImg} alt='Saída' />
-            <span>Saída</span>
-          </button>
-        </TransactionTypeContainer>
+				<TransactionTypeContainer>
+					<RadioBox
+						type='button'
+						onClick={() => setType('deposit')}
+						isActive={type === 'deposit'}
+					>
+						<img src={incomeImg} alt='Entrada' />
+						<span>Entrada</span>
+					</RadioBox>
 
-        <input type='text' placeholder='Categotria'></input>
-        <button type='submit'>Cadastar</button>
-      </Container>
-    </Modal>
-  );
+					<RadioBox
+						type='button'
+						onClick={() => setType('wirhdraw')}
+						isActive={type === 'wirhdraw'}
+					>
+						<img src={outcomeImg} alt='Saída' />
+						<span>Saída</span>
+					</RadioBox>
+				</TransactionTypeContainer>
+
+				<input type='text' placeholder='Categotria'></input>
+				<button type='submit'>Cadastar</button>
+			</Container>
+		</Modal>
+	);
 }
