@@ -80,8 +80,8 @@ export function NewTransactionModal({
 
 					<RadioBox
 						type='button'
-						onClick={() => setType('wirhdraw')}
-						isActive={type === 'wirhdraw'}
+						onClick={() => setType('withdraw')}
+						isActive={type === 'withdraw'}
 						activeColor='red'
 					>
 						<img src={outcomeImg} alt='Saída' />
